@@ -1,0 +1,19 @@
+loops.forever(function () {
+    if (agent.inspect(AgentInspection.Block, SixDirection.Forward) == blocks.block(Block.LogOak)) {
+        agent.destroy(SixDirection.Forward)
+        agent.collectAll()
+        agent.move(SixDirection.Up, 1)
+    } else if (agent.detect(AgentDetection.Block, SixDirection.Up)) {
+        agent.destroy(SixDirection.Up)
+        agent.move(SixDirection.Up, 1)
+    } else {
+        agent.move(SixDirection.Down, 1)
+    }
+    if (agent.inspect(AgentInspection.Block, SixDirection.Forward) == blocks.block(Block.Air) && (agent.inspect(AgentInspection.Block, SixDirection.Down) == blocks.block(Block.Grass) && agent.inspect(AgentInspection.Block, SixDirection.Forward) != blocks.block(Block.OakSapling))) {
+        agent.place(SixDirection.Forward)
+        if (agent.detect(AgentDetection.Block, SixDirection.Down)) {
+            agent.setSlot(1)
+            agent.dropAll(SixDirection.Back)
+        }
+    }
+})
