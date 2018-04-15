@@ -1,80 +1,70 @@
-import java.awt.EventQueue;
-import java.awt.event.*;
+import java.awt.*;
 import java.io.*;
 import javax.swing.*;
 
 /**
- * Program do przeglądania obrazów.
- * @version 1.22 2007-05-21
+ * A program for viewing images.
+ * @version 1.30 2014-02-27
  * @author Cay Horstmann
  */
 public class ImageViewer
 {
    public static void main(String[] args)
    {
-      EventQueue.invokeLater(new Runnable()
-         {
-            public void run()
-            {
-               JFrame frame = new ImageViewerFrame();
-               frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-               frame.setVisible(true);
-            }
-         });
+      EventQueue.invokeLater(() -> {
+         JFrame frame = new ImageViewerFrame();
+         frame.setTitle("ImageViewer");
+         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         frame.setVisible(true);
+      });
    }
 }
 
 /**
- * Ramka z etykietą wyświetlająca obraz.
+ * A frame with a label to show an image.
  */
 class ImageViewerFrame extends JFrame
 {
+   private JLabel label;
+   private JFileChooser chooser;
+   private static final int DEFAULT_WIDTH = 300;
+   private static final int DEFAULT_HEIGHT = 400;
+
    public ImageViewerFrame()
    {
-      setTitle("ImageViewer");
       setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 
-      // Użycie etykiety do wyświetlenia obrazów.
+      // use a label to display the images
       label = new JLabel();
       add(label);
 
-      // Dodawanie opcji wyboru obrazu.
+      // set up the file chooser
       chooser = new JFileChooser();
       chooser.setCurrentDirectory(new File("."));
 
-      // Pasek menu.
+      // set up the menu bar
       JMenuBar menuBar = new JMenuBar();
       setJMenuBar(menuBar);
-      JMenu menu = new JMenu("Plik");
+
+      JMenu menu = new JMenu("File");
       menuBar.add(menu);
 
-      JMenuItem openItem = new JMenuItem("Otwórz");
+      JMenuItem openItem = new JMenuItem("Open");
       menu.add(openItem);
-      openItem.addActionListener(new ActionListener()
-         {
-            public void actionPerformed(ActionEvent event)
-            {
-               // Wyświetlenie okna dialogowego wyboru pliku.
-               int result = chooser.showOpenDialog(null);
+      openItem.addActionListener(event -> {
+         // show file chooser dialog
+            int result = chooser.showOpenDialog(null);
 
-               // Jeśli plik został wybrany, ustawiamy go jako ikonę etykiety.
-               if (result == JFileChooser.APPROVE_OPTION)
-               {
-                  String name = chooser.getSelectedFile().getPath();
-                  label.setIcon(new ImageIcon(name));
-               }
+            // if file selected, set it as icon of the label
+            if (result == JFileChooser.APPROVE_OPTION)
+            {
+               String name = chooser.getSelectedFile().getPath();
+               label.setIcon(new ImageIcon(name));
             }
          });
 
-      JMenuItem exitItem = new JMenuItem("Zakończ");
+      JMenuItem exitItem = new JMenuItem("Exit");
       menu.add(exitItem);
-      exitItem.addActionListener(new ActionListener()
-         {
-            public void actionPerformed(ActionEvent event)
-            {
-               System.exit(0);
-            }
-         });
+      exitItem.addActionListener(event -> System.exit(0));
    }
-
 }
