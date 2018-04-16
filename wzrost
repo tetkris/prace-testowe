@@ -1,0 +1,20 @@
+// publikuje klase o nazwie wzrost, nazwa tego pliku musi miec taka sama nazwe czyli wzrost.java
+public class wzrost {
+
+// standardowa linijka rozpoczynajaca metode
+public static void main(java.lang.String[] args){
+
+// nazwy zmiennych , int oznacza ze zmienna przyjmie wartosc liczbowa 
+int wzrost_do_pasa;
+int wzrost_od_pasa;
+  int caly_wzrost;
+  
+  // tutaj ponizej nadajemy wartosci zmiennym
+  wzrost_do_pasa = 100;
+  wzrost_od_pasa = 80;
+  caly_wzrost = wzrost_do_pasa + wzrost_od_pasa;
+  
+// na koncu argument ktory wyswietli nam w konsoli wynik dzialania programu (przeprowadzonych obliczen na zmiennych)
+System.out.println(caly_wzrost);
+}
+}
