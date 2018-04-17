@@ -1,5 +1,5 @@
-// publikuje klase o nazwie wzrost, nazwa tego pliku musi miec taka sama nazwe czyli wzrost.java
-public class wzrost {
+// publikuje klase o nazwie Wzrost, nazwa tego pliku musi miec taka sama nazwe czyli Wzrost.java
+public class Wzrost {
 
 // standardowa linijka rozpoczynajaca metode
 public static void main(java.lang.String[] args){
@@ -8,6 +8,11 @@ public static void main(java.lang.String[] args){
 int wzrost_do_pasa;
 int wzrost_od_pasa;
   int caly_wzrost;
+  
+  /*można to również zapisać tak
+    int wzrost_do_pasa = 100;
+    int wzrost_od_pasa = 80;
+    int caly_wzrost = wzrost_do_pasa + wzrost_od_pasa; */
   
   // tutaj ponizej nadajemy wartosci zmiennym
   wzrost_do_pasa = 100;
