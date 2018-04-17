@@ -1,0 +1,23 @@
+package zadanie1;
+        public class Zadanie1 {
+        
+        public static void main(java.lang.String[] args) {
+        
+        /*Stwórz program, który oblicza ile należy dodać rozpuszczanej substancji
+            do określonej ilości wody aby otrzymać roztwór o żądanym stężeniu (
+            upraszczamy sytuację przyjmując, że 1 ml = 1 g roztworu).
+            Na przykład wpisujemy jako dane wejściowe, że chcemy mieć 250 ml 3% roztworu a program wylicza,
+            że 7,5 g substancji rozpuszczanej powinno się znaleźć w podanej objętości roztworu i 
+            informuje o tym użytkownika.*/
+        
+        double procentowoscRoztworu = 3;
+        double roztwor = 250;
+        double substancja = ((procentowoscRoztworu*roztwor)/100);
+        System.out.println(("Potrzeba wsypać ")+(substancja)+("g substancji by uzyskać ")+(roztwor)+(" ml ")+
+                (procentowoscRoztworu)+(" procentowego roztworu."));
+       
+        
+        
+        
+                                                         }
+                                }
